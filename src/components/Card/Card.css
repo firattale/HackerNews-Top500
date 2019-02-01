@@ -1,0 +1,28 @@
+.card {
+  /* width: 10rem; */
+  border: 1px solid #ef9a9a;
+  /* height: 10rem; */
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  padding: 1rem;
+  margin: 0 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: transform 0.5s;
+}
+
+.card:hover,
+.card:focus {
+  transform: scale3d(1.05, 1.05, 1.05);
+  transition: transform 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+section {
+  margin: 0.5rem;
+}
