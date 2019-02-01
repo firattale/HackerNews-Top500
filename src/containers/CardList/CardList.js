@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
+import Spinner from "../../components/Spinner/Spinner";
 import "./CardList.css";
 class CardList extends Component {
   state = {
@@ -7,7 +8,6 @@ class CardList extends Component {
     articleScores: [],
     articleTitles: [],
     articleAuthors: [],
-    // articleTexts: [],
     articleUrls: [],
     isLoading: true
   };
@@ -57,7 +57,7 @@ class CardList extends Component {
     return (
       <div className="container">
         {this.state.isLoading ? (
-          "LOADING"
+          <Spinner />
         ) : (
           <Card
             ids={this.state.articleIds}
