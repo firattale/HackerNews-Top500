@@ -1,10 +1,10 @@
 import React from "react";
-import Footer from "./Footer";
+import Spinner from "./Spinner";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
-const wrapper = shallow(<Footer />);
+const wrapper = shallow(<Spinner />);
 
 it("should render Footer component", () => {
   expect(wrapper.length).toBe(1);
