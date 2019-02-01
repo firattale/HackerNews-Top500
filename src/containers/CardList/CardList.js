@@ -8,226 +8,65 @@ class CardList extends Component {
     articleTitles: [],
     articleAuthors: [],
     // articleTexts: [],
-    articleUrls: []
+    articleUrls: [],
+    isLoading: true
   };
-  // async componentDidMount() {
-  //   try {
-  //     const response = await fetch(
-  //       "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
-  //     );
-  //     const json = await response.json();
-  //     this.setState({ articleIds: json });
-  //     if (this.state.articleIds !== []) {
-  //       const scores = [];
-  //       const titles = [];
-  //       const authors = [];
-  //       const urls = [];
-  //       // const texts = [];
+  async componentDidMount() {
+    try {
+      // fetching Ids of top 500 stories
+      const response = await fetch(
+        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
+      );
+      const json = await response.json();
+      this.setState({ articleIds: json });
 
-  //       this.state.articleIds.map(async id => {
-  //         const res = await fetch(
-  //           `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
-  //         );
-  //         const json = await res.json();
-  //         scores.push(json.score);
-  //         titles.push(json.title);
-  //         authors.push(json.by);
-  //         urls.push(json.url);
-  //         // texts.push(json.kids[0]);
-  //         this.setState({ articleScores: scores });
-  //         this.setState({ articleTitles: titles });
-  //         this.setState({ articleAuthors: authors });
-  //         this.setState({ articleUrls: urls });
-  //         // this.setState({ articleTexts: texts });
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+      // when the articledIds have been fetched, next fetch other information according to ids
+      const scores = [];
+      const titles = [];
+      const authors = [];
+      const urls = [];
+      let requests = this.state.articleIds.map(id =>
+        fetch(
+          `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
+        )
+      );
+      Promise.all(requests)
+        .then(responses => {
+          return responses;
+        })
+        .then(responses => Promise.all(responses.map(r => r.json())))
+        .then(data => {
+          console.log(data);
+          data.forEach((item, i) => {
+            scores.push(data[i].score);
+            titles.push(data[i].title);
+            authors.push(data[i].by);
+            urls.push(data[i].url);
+          });
+          this.setState({ articleScores: scores });
+          this.setState({ articleTitles: titles });
+          this.setState({ articleAuthors: authors });
+          this.setState({ articleUrls: urls });
+          this.setState({ isLoading: false });
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   render() {
     return (
       <div className="container">
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
-        <Card
-          scores={this.state.articleScores}
-          titles={this.state.articleTitles}
-          authors={this.state.articleAuthors}
-          urls={this.state.articleUrls}
-        />
+        {this.state.isLoading ? (
+          "LOADING"
+        ) : (
+          <Card
+            ids={this.state.articleIds}
+            scores={this.state.articleScores}
+            titles={this.state.articleTitles}
+            authors={this.state.articleAuthors}
+            urls={this.state.articleUrls}
+          />
+        )}
       </div>
     );
   }
