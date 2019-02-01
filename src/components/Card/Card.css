@@ -6,10 +6,12 @@
   overflow: hidden;
   text-align: center;
   display: flex;
+  justify-content: space-between;
   padding: 1rem;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: transform 0.5s;
+  /* place-self: center stretch; */
 }
 
 .card:hover,
@@ -30,6 +32,10 @@ a {
 
 section {
   margin: 0.5rem;
+}
+
+.sec2 {
+  width: 100%;
 }
 
 .far {

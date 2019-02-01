@@ -36,7 +36,6 @@ class CardList extends Component {
         })
         .then(responses => Promise.all(responses.map(r => r.json())))
         .then(data => {
-          console.log(data);
           data.forEach((item, i) => {
             scores.push(data[i].score);
             titles.push(data[i].title);
