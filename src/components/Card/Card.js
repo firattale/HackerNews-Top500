@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import PropTypes from "prop-types";
 
 const Card = ({ ids, scores, titles, authors, urls }) => {
   return ids.map((id, i) => {
@@ -20,4 +21,11 @@ const Card = ({ ids, scores, titles, authors, urls }) => {
   });
 };
 
+Card.propTypes = {
+  ids: PropTypes.array.isRequired,
+  scores: PropTypes.array.isRequired,
+  titles: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
+  urls: PropTypes.array.isRequired
+};
 export default Card;
