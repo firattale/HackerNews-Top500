@@ -3,7 +3,7 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <div>
         <p>Hacker News Top 500 Stories</p>
         <img src={require("./logo.jpg")} alt="Logo" height="50" width="50" />

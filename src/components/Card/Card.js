@@ -15,9 +15,11 @@ const Card = ({ scores, titles, authors, urls }) => {
         <i className="far fa-heart" />
         {scores}
       </section>
-      <section className="sec2">
+      <section className="section2">
         <strong>
-          <a href={urls}>{titles}</a>
+          <a className="links" href={urls}>
+            {titles}
+          </a>
         </strong>
         <p> By {authors}</p>
       </section>

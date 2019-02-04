@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <p>Copyright &copy; 2019 Firat Tale</p>
     </footer>
   );

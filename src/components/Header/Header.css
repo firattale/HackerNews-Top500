@@ -1,4 +1,4 @@
-header {
+.header {
   background: #f46b45;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #eea849, #f46b45);
@@ -9,21 +9,21 @@ header {
   width: 100%;
 }
 
-header div {
+.header div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 1rem;
 }
 
-header p {
+.header p {
   font-size: 2rem;
   font-weight: bold;
   color: #080808;
 }
 
 @media only screen and (max-width: 600px) {
-  header p {
+  .header p {
     font-size: 1rem;
   }
 }

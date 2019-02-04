@@ -4,11 +4,11 @@ import { shallow } from "enzyme";
 import "../../setupTests";
 
 const mockProps = {
-  ids: [1],
-  authors: ["Firat"],
-  scores: [150],
-  titles: ["Hello World"],
-  urls: ["www.google.com"]
+  ids: 1,
+  authors: "Firat",
+  scores: 150,
+  titles: "Hello World",
+  urls: "www.google.com"
 };
 
 const wrapper = shallow(<Card {...mockProps} />);
