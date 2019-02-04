@@ -47,10 +47,10 @@ class CardList extends Component {
             return (
               <Card
                 key={id}
-                scores={this.state.articleScores[i]}
-                titles={this.state.articleTitles[i]}
-                authors={this.state.articleAuthors[i]}
-                urls={this.state.articleUrls[i]}
+                score={this.state.articleScores[i]}
+                title={this.state.articleTitles[i]}
+                author={this.state.articleAuthors[i]}
+                url={this.state.articleUrls[i]}
               />
             );
           })
