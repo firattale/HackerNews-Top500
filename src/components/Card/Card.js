@@ -2,13 +2,15 @@ import React from "react";
 import "./Card.css";
 import PropTypes from "prop-types";
 
-const Card = ({ scores, titles, authors, urls, onClick, gridExpand }) => {
+const Card = ({ scores, titles, authors, urls }) => {
+  let textInput = React.createRef();
+
+  const handleClick = () => {
+    textInput.current.classList.toggle("expandGrid");
+  };
+
   return (
-    <div
-      className="card"
-      onClick={onClick}
-      // style={{ backgroundColor: gridExpand }}
-    >
+    <div className="card" onClick={handleClick} ref={textInput}>
       <section>
         <i className="far fa-heart" />
         {scores}
@@ -27,6 +29,6 @@ Card.propTypes = {
   scores: PropTypes.number.isRequired,
   titles: PropTypes.string.isRequired,
   authors: PropTypes.string.isRequired,
-  urls: PropTypes.string.isRequired
+  urls: PropTypes.string
 };
 export default Card;

@@ -10,17 +10,11 @@ class CardList extends Component {
     articleTitles: [],
     articleAuthors: [],
     articleUrls: [],
-    isLoading: true,
-    gridExpand: ""
+    isLoading: true
   };
   componentDidMount() {
     this.FetchArticles();
   }
-
-  handleClick = e => {
-    // this.setState({ gridExpand: "red" });
-    console.log(e.target);
-  };
 
   FetchArticles = async () => {
     try {
@@ -50,7 +44,6 @@ class CardList extends Component {
           this.state.articleIds.map((id, i) => {
             return (
               <Card
-                onClick={this.handleClick}
                 key={id}
                 scores={this.state.articleScores[i]}
                 titles={this.state.articleTitles[i]}
