@@ -1,23 +1,34 @@
 import React from "react";
 import "./Card.css";
+import PropTypes from "prop-types";
 
-const Card = ({ ids, scores, titles, authors, urls }) => {
-  return ids.map((id, i) => {
-    return (
-      <div className="card" key={id}>
-        <section>
-          <i className="far fa-heart" />
-          {scores[i]}
-        </section>
-        <section className="sec2">
-          <strong>
-            <a href={urls[i]}>{titles[i]}</a>
-          </strong>
-          <p> By {authors[i]}</p>
-        </section>
-      </div>
-    );
-  });
+const Card = ({ scores, titles, authors, urls }) => {
+  let textInput = React.createRef();
+
+  const handleClick = () => {
+    textInput.current.classList.toggle("expandGrid");
+  };
+
+  return (
+    <div className="card" onClick={handleClick} ref={textInput}>
+      <section>
+        <i className="far fa-heart" />
+        {scores}
+      </section>
+      <section className="sec2">
+        <strong>
+          <a href={urls}>{titles}</a>
+        </strong>
+        <p> By {authors}</p>
+      </section>
+    </div>
+  );
 };
 
+Card.propTypes = {
+  scores: PropTypes.number.isRequired,
+  titles: PropTypes.string.isRequired,
+  authors: PropTypes.string.isRequired,
+  urls: PropTypes.string
+};
 export default Card;
