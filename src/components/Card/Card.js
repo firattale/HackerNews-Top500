@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const Card = ({ score, title, author, url }) => {
   let textInput = React.createRef();
-
   const handleClick = () => {
     textInput.current.classList.toggle("expandGrid");
   };
