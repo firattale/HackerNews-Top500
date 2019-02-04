@@ -1,9 +1,8 @@
 import React from "react";
 import Card from "./Card";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { shallow } from "enzyme";
+import "../../setupTests";
 
-Enzyme.configure({ adapter: new Adapter() });
 const mockProps = {
   ids: [1],
   authors: ["Firat"],

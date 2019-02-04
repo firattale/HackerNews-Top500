@@ -30,7 +30,7 @@ class CardList extends Component {
       this.setState({ articleUrls: result.url });
       this.setState({ isLoading: false });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

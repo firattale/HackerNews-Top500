@@ -22,10 +22,10 @@ const Card = ({ ids, scores, titles, authors, urls }) => {
 };
 
 Card.propTypes = {
-  ids: PropTypes.array.isRequired,
-  scores: PropTypes.array.isRequired,
-  titles: PropTypes.array.isRequired,
-  authors: PropTypes.array.isRequired,
-  urls: PropTypes.array.isRequired
+  ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+  scores: PropTypes.arrayOf(PropTypes.number).isRequired,
+  titles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  urls: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 export default Card;

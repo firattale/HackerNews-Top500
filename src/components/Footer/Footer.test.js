@@ -1,11 +1,9 @@
 import React from "react";
 import Footer from "./Footer";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
-const wrapper = shallow(<Footer />);
+import { shallow } from "enzyme";
+import "../../setupTests";
 
 it("should render Footer component", () => {
+  const wrapper = shallow(<Footer />);
   expect(wrapper.length).toBe(1);
 });
