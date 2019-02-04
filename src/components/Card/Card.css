@@ -18,11 +18,13 @@
 .links {
   text-decoration: none;
   color: black;
+  transition: all 0.3s ease-in-out;
 }
 
 .card .links:hover,
 .card .links:active {
   color: #ef9a9a;
+  transition: all 0.3s ease-in-out;
 }
 
 section {
