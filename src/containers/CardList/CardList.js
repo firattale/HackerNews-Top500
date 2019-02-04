@@ -19,7 +19,9 @@ class CardList extends Component {
   FetchArticles = async () => {
     try {
       // fetching Ids of top 500 stories
-      const articleIds = await fetchIds();
+      const url =
+        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+      const articleIds = await fetchIds(url);
       this.setState({ articleIds });
       // when the articledIds have been fetched, next fetch other information according to ids
       const result = await fetchArticleInfos(this.state.articleIds);
@@ -45,10 +47,10 @@ class CardList extends Component {
             return (
               <Card
                 key={id}
-                scores={this.state.articleScores[i]}
-                titles={this.state.articleTitles[i]}
-                authors={this.state.articleAuthors[i]}
-                urls={this.state.articleUrls[i]}
+                score={this.state.articleScores[i]}
+                title={this.state.articleTitles[i]}
+                author={this.state.articleAuthors[i]}
+                url={this.state.articleUrls[i]}
               />
             );
           })

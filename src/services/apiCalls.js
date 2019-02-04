@@ -1,7 +1,5 @@
-export const fetchIds = async () => {
-  const response = await fetch(
-    "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
-  );
+export const fetchIds = async url => {
+  const response = await fetch(url);
   const ids = response.json();
   return ids;
 };
