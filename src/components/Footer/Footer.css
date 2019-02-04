@@ -1,4 +1,4 @@
-footer {
+.footer {
   background: #f46b45;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #eea849, #f46b45);
@@ -7,12 +7,11 @@ footer {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: absolute;
   padding: 0.5rem;
-  /* margin-top: 1rem; */
   bottom: 0;
   width: 100%;
 }
 
-footer p {
+.footer p {
   font-size: 1rem;
   font-weight: bold;
   color: #080808;
@@ -20,7 +19,7 @@ footer p {
 }
 
 @media only screen and (max-width: 600px) {
-  footer p {
+  .footer p {
     font-size: 1rem;
   }
 }

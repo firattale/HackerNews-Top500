@@ -19,16 +19,19 @@ class CardList extends Component {
   FetchArticles = async () => {
     try {
       // fetching Ids of top 500 stories
-      const articleIds = await fetchIds();
+      const url =
+        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+      const articleIds = await fetchIds(url);
       this.setState({ articleIds });
-
       // when the articledIds have been fetched, next fetch other information according to ids
       const result = await fetchArticleInfos(this.state.articleIds);
-      this.setState({ articleScores: result.score });
-      this.setState({ articleTitles: result.title });
-      this.setState({ articleAuthors: result.author });
-      this.setState({ articleUrls: result.url });
-      this.setState({ isLoading: false });
+      this.setState({
+        articleScores: result.score,
+        articleTitles: result.title,
+        articleAuthors: result.author,
+        articleUrls: result.url,
+        isLoading: false
+      });
     } catch (error) {
       console.error(error);
     }
@@ -40,13 +43,17 @@ class CardList extends Component {
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          <Card
-            ids={this.state.articleIds}
-            scores={this.state.articleScores}
-            titles={this.state.articleTitles}
-            authors={this.state.articleAuthors}
-            urls={this.state.articleUrls}
-          />
+          this.state.articleIds.map((id, i) => {
+            return (
+              <Card
+                key={id}
+                score={this.state.articleScores[i]}
+                title={this.state.articleTitles[i]}
+                author={this.state.articleAuthors[i]}
+                url={this.state.articleUrls[i]}
+              />
+            );
+          })
         )}
       </div>
     );

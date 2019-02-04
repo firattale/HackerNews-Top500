@@ -1,14 +1,13 @@
 import React from "react";
 import Card from "./Card";
 import { shallow } from "enzyme";
-import "../../setupTests";
 
 const mockProps = {
-  ids: [1],
-  authors: ["Firat"],
-  scores: [150],
-  titles: ["Hello World"],
-  urls: ["www.google.com"]
+  id: 1,
+  author: "Firat",
+  score: 150,
+  title: "Hello World",
+  url: "www.google.com"
 };
 
 const wrapper = shallow(<Card {...mockProps} />);
