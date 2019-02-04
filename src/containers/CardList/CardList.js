@@ -10,25 +10,32 @@ class CardList extends Component {
     articleTitles: [],
     articleAuthors: [],
     articleUrls: [],
-    isLoading: true
+    isLoading: true,
+    gridExpand: ""
   };
   componentDidMount() {
     this.FetchArticles();
   }
+
+  handleClick = e => {
+    // this.setState({ gridExpand: "red" });
+    console.log(e.target);
+  };
 
   FetchArticles = async () => {
     try {
       // fetching Ids of top 500 stories
       const articleIds = await fetchIds();
       this.setState({ articleIds });
-
       // when the articledIds have been fetched, next fetch other information according to ids
       const result = await fetchArticleInfos(this.state.articleIds);
-      this.setState({ articleScores: result.score });
-      this.setState({ articleTitles: result.title });
-      this.setState({ articleAuthors: result.author });
-      this.setState({ articleUrls: result.url });
-      this.setState({ isLoading: false });
+      this.setState({
+        articleScores: result.score,
+        articleTitles: result.title,
+        articleAuthors: result.author,
+        articleUrls: result.url,
+        isLoading: false
+      });
     } catch (error) {
       console.error(error);
     }
@@ -40,13 +47,18 @@ class CardList extends Component {
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          <Card
-            ids={this.state.articleIds}
-            scores={this.state.articleScores}
-            titles={this.state.articleTitles}
-            authors={this.state.articleAuthors}
-            urls={this.state.articleUrls}
-          />
+          this.state.articleIds.map((id, i) => {
+            return (
+              <Card
+                onClick={this.handleClick}
+                key={id}
+                scores={this.state.articleScores[i]}
+                titles={this.state.articleTitles[i]}
+                authors={this.state.articleAuthors[i]}
+                urls={this.state.articleUrls[i]}
+              />
+            );
+          })
         )}
       </div>
     );
